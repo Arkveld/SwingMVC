@@ -9,7 +9,7 @@ public class HomeController {
     //Attribut
     //Pas besoin de model pour ce controller
     private ViewHome viewHome;
-    private ViewRegister viewRegister;
+
 
     public HomeController(ViewHome viewHome) {
         this.viewHome = viewHome;
@@ -18,9 +18,8 @@ public class HomeController {
             System.out.println("Bouton Login");
         });
         viewHome.addButtonRegisterListener(e -> {
-            System.out.println("Bouton Register");
             viewHome.closeView();
-            new RegisterController(viewRegister);
+            new RegisterController(new ViewRegister());
         });
     }
 }

@@ -1,7 +1,17 @@
 package app;
 
+import controller.HomeController;
+import view.ViewHome;
+
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new HomeController(new ViewHome());
+            }
+        });
     }
 }

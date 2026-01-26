@@ -9,14 +9,13 @@ import javax.swing.*;
 
 public class RegisterController {
     private ViewRegister viewRegister;
-    private ViewHome viewHome;
 
     public RegisterController(ViewRegister viewRegister) {
         this.viewRegister = viewRegister;
 
         viewRegister.addButtonHome(e-> {
             viewRegister.closeView();
-            new HomeController(viewHome);
+            new HomeController(new ViewHome());
         });
 
         viewRegister.addButtonRegister(e-> {
