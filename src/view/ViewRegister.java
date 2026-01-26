@@ -104,7 +104,7 @@ public class ViewRegister {
     public String getInputFirstname(){
         return this.inputFirstname.getText();
     }
-    public String getInputlastName(){
+    public String getInputLastName(){
         return this.inputLastname.getText();
     }
 

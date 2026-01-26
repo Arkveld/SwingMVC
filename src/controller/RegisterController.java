@@ -23,7 +23,7 @@ public class RegisterController {
 
             //Récupère les données du formulaire
             String firstname = viewRegister.getInputFirstname();
-            String lastname = viewRegister.getInputlastName();
+            String lastname = viewRegister.getInputLastName();
             String email = viewRegister.getInputEmail();
             String password = viewRegister.getInputPassword();
 
