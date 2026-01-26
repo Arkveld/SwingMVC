@@ -74,4 +74,8 @@ public class ViewHome {
         this.btnLogin.addActionListener(listener);
     }
 
+    public void closeView() {
+        this.frame.dispose();
+    }
+
 }

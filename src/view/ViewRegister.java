@@ -100,10 +100,33 @@ public class ViewRegister {
 
     }
 
+    //Getter
+    public String getInputFirstname(){
+        return this.inputFirstname.getText();
+    }
+    public String getInputlastName(){
+        return this.inputLastname.getText();
+    }
+
+    public String getInputEmail(){
+        return this.inputMail.getText();
+    }
+
+    public String getInputPassword(){
+        return new String(this.inputPassword.getPassword());
+    }
+
     public void addButtonRegister(ActionListener listener){
         this.btnRegister.addActionListener(listener);
     }
     public void addButtonHome(ActionListener listener){
         this.btnHome.addActionListener(listener);
+    }
+    public void closeView() {
+        this.frame.dispose();
+    }
+
+    public void viewMessage(String message){
+        JOptionPane.showMessageDialog(this.frame, message);
     }
 }
