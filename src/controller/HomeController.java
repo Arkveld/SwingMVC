@@ -3,6 +3,7 @@ package controller;
 import dao.AccountDao;
 import model.Account;
 import model.Customer;
+import view.ViewAccount;
 import view.ViewHome;
 import view.ViewRegister;
 
@@ -31,6 +32,7 @@ public class HomeController {
             new RegisterController(new ViewRegister());
         });
     }
+
     private void login (String email, String password){
         AccountDao accountDao = new AccountDao();
         Customer customer = accountDao.getCustomerByMail(email);
@@ -41,6 +43,8 @@ public class HomeController {
         } else {
             viewHome.viewMessage("Authentification réussie");
             Account account = accountDao.getAccountByCustomer(customer.getIdCustomer());
+            viewHome.closeView();
+            new AccountController(new ViewAccount(account));
         }
     }
 }

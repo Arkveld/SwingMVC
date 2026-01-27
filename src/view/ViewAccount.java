@@ -4,6 +4,7 @@ import model.Account;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class ViewAccount {
     //Attributs
@@ -31,7 +32,7 @@ public class ViewAccount {
         this.panel.setBackground(new Color(24, 26, 178));
 
         //******** Label ********/
-        this.label1 = new JLabel("Titulaire du compte: ");
+        this.label1 = new JLabel("Titulaire du compte: " + account.getCustomer().getFirstname() + " " + account.getCustomer().getLastname());
         this.label1.setBounds(70, 60, 540, 50);
         this.label1.setFont(new Font("Noto Sans", Font.PLAIN, 32));
         this.label1.setForeground(Color.white);
@@ -43,7 +44,7 @@ public class ViewAccount {
         this.label2.setForeground(Color.white);
         this.panel.add(this.label2);
 
-        this.label3 = new JLabel( "€");
+        this.label3 = new JLabel( account.getSolde() + "€");
         this.label3.setBounds(350, 140, 480, 50);
         this.label3.setFont(new Font("Noto Sans", Font.PLAIN, 34));
         this.label3.setForeground(Color.white);
@@ -65,6 +66,18 @@ public class ViewAccount {
         //********** Affichage ********** /
         this.frame.add(this.panel);
         this.frame.setVisible(true);
+    }
+
+    public void addButtonDepot(ActionListener listener){
+        this.btnDepot.addActionListener(listener);
+    }
+
+    public void addButtonRetrait(ActionListener listener){
+        this.btnRetrait.addActionListener(listener);
+    }
+
+    public void addButtonLogout(ActionListener listener){
+        this.btnLogout.addActionListener(listener);
     }
 
     public void closeView() {
