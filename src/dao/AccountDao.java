@@ -83,4 +83,37 @@ public class AccountDao {
             return null;
         }
     }
+
+    public Account getAccountByCustomer(int id){
+        Connection con;
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "Select * from customers\n" +
+                "Right Join account on customers.id_customers = account.customer_id\n" + "Where id_customers=?";
+        try {
+            con = DbConnection.seConnecter();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            //Instance de Account
+            Customer customer = new Customer();
+            int solde = 0;
+            while (rs.next()){
+                customer.setIdCustomer(rs.getInt("id_customers"));
+                customer.setFirstname(rs.getString("firstname"));
+                customer.setLastname(rs.getString("lastname"));
+                solde = rs.getInt("solde");
+            }
+            Account account = new Account(customer);
+            account.setSolde(solde);
+
+            rs.close();
+            ps.close();
+            con.close();
+            return account;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

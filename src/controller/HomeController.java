@@ -1,6 +1,7 @@
 package controller;
 
 import dao.AccountDao;
+import model.Account;
 import model.Customer;
 import view.ViewHome;
 import view.ViewRegister;
@@ -39,6 +40,7 @@ public class HomeController {
             viewHome.viewMessage("Échec login");
         } else {
             viewHome.viewMessage("Authentification réussie");
+            Account account = accountDao.getAccountByCustomer(customer.getIdCustomer());
         }
     }
 }

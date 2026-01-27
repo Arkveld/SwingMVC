@@ -66,4 +66,12 @@ public class ViewAccount {
         this.frame.add(this.panel);
         this.frame.setVisible(true);
     }
+
+    public void closeView() {
+        this.frame.dispose();
+    }
+
+    public void viewMessage(String message){
+        JOptionPane.showMessageDialog(this.frame, message);
+    }
 }
