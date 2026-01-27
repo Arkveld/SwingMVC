@@ -2,6 +2,7 @@ package dao;
 
 import core.DbConnection;
 import model.Account;
+import model.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,5 +53,34 @@ public class AccountDao {
            System.out.println(e.getMessage());
            return false;
        }
+    }
+
+    public Customer getCustomerByMail(String mail){
+        Connection con;
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            String sql = "SELECT * FROM customers WHERE email=?";
+            con = DbConnection.seConnecter();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, mail);
+            rs = ps.executeQuery();
+            Customer customer = new Customer();
+            while (rs.next()){
+                customer.setIdCustomer(rs.getInt("id_customers"));
+                customer.setFirstname(rs.getString("firstname"));
+                customer.setLastname(rs.getString("lastname"));
+                customer.setEmail(rs.getString("email"));
+                customer.setPassword(rs.getString("password"));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+            return customer;
+        } catch (SQLException e){
+            System.out.println("Erreur dans nos serveurs");
+            return null;
+        }
     }
 }

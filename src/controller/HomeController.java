@@ -15,7 +15,9 @@ public class HomeController {
         this.viewHome = viewHome;
         //Évenements pour les boutons
         viewHome.addButtonLoginListener(e -> {
-            System.out.println("Bouton Login");
+            //Récupère les données du formulaire
+            String email = viewHome.getInputMail();
+            String password = viewHome.getPasswordField();
         });
         viewHome.addButtonRegisterListener(e -> {
             viewHome.closeView();

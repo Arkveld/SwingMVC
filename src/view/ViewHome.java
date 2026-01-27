@@ -64,6 +64,14 @@ public class ViewHome {
         this.frame.add(this.panel);
         this.frame.setVisible(true);
     }
+    //Getter
+    public String getInputMail(){
+        return this.mailField.getText();
+    }
+
+    public String getPasswordField(){
+        return  new String(this.passwordField.getPassword());
+    }
 
     //fonctions pour ajouter un évenement à un bouton
     public void addButtonRegisterListener(ActionListener listener){
@@ -76,6 +84,10 @@ public class ViewHome {
 
     public void closeView() {
         this.frame.dispose();
+    }
+
+    public void viewMessage(String message){
+        JOptionPane.showMessageDialog(this.frame, message);
     }
 
 }
