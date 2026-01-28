@@ -116,4 +116,31 @@ public class AccountDao {
             return null;
         }
     }
+
+    public boolean depot(Account account, int amount){
+        if(amount < 0){
+            return false;
+        } else {
+            account.setSolde(account.getSolde() + amount);
+            //Mise à jour dans la BDD
+            String sql = "UPDATE account SET solde =? WHERE customer_id =?";
+            Connection con;
+            PreparedStatement ps;
+
+            try {
+                con = DbConnection.seConnecter();
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, account.getSolde());
+                ps.setInt(2, account.getCustomer().getIdCustomer());
+                ps.executeUpdate();
+
+                ps.close();
+                con.close();
+                return true;
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+                return false;
+            }
+        }
+    }
 }
