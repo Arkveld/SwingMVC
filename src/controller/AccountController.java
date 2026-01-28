@@ -2,6 +2,7 @@ package controller;
 
 import model.Account;
 import view.ViewAccount;
+import view.ViewHome;
 
 import java.util.SequencedSet;
 
@@ -20,7 +21,8 @@ public class AccountController {
         });
 
         viewAccount.addButtonLogout(e-> {
-            System.out.println("Bouton Logout");
+            viewAccount.closeView();
+            new HomeController(new ViewHome());
         });
 
     }
