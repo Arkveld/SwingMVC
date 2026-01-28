@@ -44,7 +44,7 @@ public class HomeController {
             viewHome.viewMessage("Authentification réussie");
             Account account = accountDao.getAccountByCustomer(customer.getIdCustomer());
             viewHome.closeView();
-            new AccountController(new ViewAccount(account));
+            new AccountController(new ViewAccount(account), account);
         }
     }
 }

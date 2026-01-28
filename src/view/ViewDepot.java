@@ -62,6 +62,10 @@ public class ViewDepot {
         this.frame.setVisible(true);
     }
 
+    public int getInputMontant(){
+        return Integer.parseInt(this.montant.getText());
+    }
+
     public void addButton(ActionListener listener){
         this.button.addActionListener(listener);
     }
