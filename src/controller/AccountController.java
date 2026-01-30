@@ -4,6 +4,7 @@ import model.Account;
 import view.ViewAccount;
 import view.ViewDepot;
 import view.ViewHome;
+import view.ViewRetrait;
 
 import java.util.SequencedSet;
 
@@ -21,7 +22,8 @@ public class AccountController {
         });
 
         viewAccount.addButtonRetrait(e-> {
-            System.out.println("Bouton Retrait");
+            viewAccount.closeView();
+            new RetraitController(new ViewRetrait(account), account);
         });
 
         viewAccount.addButtonLogout(e-> {
